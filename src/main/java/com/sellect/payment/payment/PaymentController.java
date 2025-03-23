@@ -27,7 +27,7 @@ public class PaymentController {
     private final RestTemplate restTemplate;
 
     @Value("${target.host}")
-    private String successBaseUrl;
+    private String successBaseUrl; // ex) http://localhost:8080/api/v1
 
     private final Map<String, PaymentRecord> paymentStore = new ConcurrentHashMap<>();
 
@@ -71,7 +71,7 @@ public class PaymentController {
         paymentStore.put(tid, record);
 
         String successUrl =
-            successBaseUrl + "/api/v1/test/kakao-pay/success/" + pid + "?pg_token=" + pgToken;
+            successBaseUrl + "/test/kakao-pay/success/" + pid + "?pg_token=" + pgToken;
         try {
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> entity = new HttpEntity<>(headers);
