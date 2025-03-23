@@ -1,0 +1,4 @@
+server:
+  port: 8081
+target:
+  host: ${TARGET_HOST}
