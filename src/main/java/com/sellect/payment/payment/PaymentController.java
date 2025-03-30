@@ -1,5 +1,6 @@
 package com.sellect.payment.payment;
 
+import jakarta.websocket.server.PathParam;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -52,12 +53,12 @@ public class PaymentController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/in-progress")
-    public ResponseEntity<Map<String, String>> inProgress(@RequestBody Map<String, String> request) {
-        String tid = request.get("tid");
-        String pid = request.get("pid");
+    @PostMapping("/in-progress/{pid}")
+    public ResponseEntity<Map<String, String>> inProgress(
+        @PathVariable String pid) {
 
-        log.info("In-progress request received: tid={}, pid={}", tid, pid);
+//        log.info("In-progress request received: tid={}, pid={}", tid, pid);
+        log.info("In-progress request received: pid={}", pid);
 
 //        PaymentRecord record = paymentStore.get(tid);
 //        if (record == null || !record.getPid().equals(pid)) {
@@ -84,7 +85,7 @@ public class PaymentController {
                 response.getStatusCode());
 
             Map<String, String> result = new HashMap<>();
-            result.put("tid", tid);
+            result.put("tid", "tid");
             result.put("pid", pid);
 //            result.put("pg_token", pgToken);
             return ResponseEntity.ok(result);
