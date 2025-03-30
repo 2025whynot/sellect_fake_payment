@@ -52,12 +52,15 @@ public class PaymentController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/in-progress")
-    public ResponseEntity<Map<String, String>> inProgress(@RequestBody Map<String, String> request) {
-        String tid = request.get("tid");
-        String pid = request.get("pid");
+    @PostMapping("/in-progress/{pid}")
+    public ResponseEntity<Map<String, String>> inProgress(
+        @PathVariable String pid
+    ) {
+//        String tid = request.get("tid");
+//        String pid = request.get("pid");
+//        String pgToken = request.get("pg_token");
 
-        log.info("In-progress request received: tid={}, pid={}", tid, pid);
+        log.info("In-progress request received: pid={}", pid);
 
 //        PaymentRecord record = paymentStore.get(tid);
 //        if (record == null || !record.getPid().equals(pid)) {
@@ -73,7 +76,7 @@ public class PaymentController {
 //        String successUrl =
 //            successBaseUrl + "/test/kakao-pay/success/" + pid + "?pg_token=" + pgToken;
         String successUrl =
-            successBaseUrl + "/test/kakao-pay/success/" + pid;
+            successBaseUrl + "/api/v1/test/payment/kakao-pay/success/" + pid;
         try {
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> entity = new HttpEntity<>(headers);
@@ -84,9 +87,7 @@ public class PaymentController {
                 response.getStatusCode());
 
             Map<String, String> result = new HashMap<>();
-            result.put("tid", tid);
             result.put("pid", pid);
-//            result.put("pg_token", pgToken);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             log.error("Failed to send success request to PC A: url={}, error={}", successUrl,

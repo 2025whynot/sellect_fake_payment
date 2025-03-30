@@ -1,4 +1,4 @@
 server:
   port: 8081
 target:
-  host: ${TARGET_HOST}
+  host: ${TARGET_HOST:http://localhost:8080}
