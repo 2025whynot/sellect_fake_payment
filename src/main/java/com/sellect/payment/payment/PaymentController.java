@@ -87,7 +87,9 @@ public class PaymentController {
                 response.getStatusCode());
 
             Map<String, String> result = new HashMap<>();
+            result.put("tid", "tid");
             result.put("pid", pid);
+//            result.put("pg_token", pgToken);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             log.error("Failed to send success request to PC A: url={}, error={}", successUrl,
