@@ -74,7 +74,7 @@ public class PaymentController {
 //        paymentStore.put(tid, record);
 //
         String successUrl =
-            successBaseUrl + "/test/kakao-pay/success/" + pid;
+            successBaseUrl + "/api/v1/test/kakao-pay/success/" + pid;
 //        String successUrl =
 //            successBaseUrl + "/api/v1/test/payment/kakao-pay/success/" + pid;
         try {
