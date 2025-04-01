@@ -73,10 +73,10 @@ public class PaymentController {
 //        record.setStatus("IN_PROGRESS");
 //        paymentStore.put(tid, record);
 //
-        String successUrl =
-            successBaseUrl + "/api/v1/test/kakao-pay/success/" + pid;
 //        String successUrl =
-//            successBaseUrl + "/api/v1/test/payment/kakao-pay/success/" + pid;
+//            successBaseUrl + "/api/v1/test/kakao-pay/success/" + pid;
+        String successUrl =
+            successBaseUrl + "/api/v1/test/payment/kakao-pay/success/" + pid;
         try {
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> entity = new HttpEntity<>(headers);
