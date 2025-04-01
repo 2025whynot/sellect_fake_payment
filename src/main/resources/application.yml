@@ -1,4 +1,6 @@
 server:
   port: 8081
+  tomcat:
+    accept-count: 10000
 target:
   host: ${TARGET_HOST:http://52.79.184.29:8080}
